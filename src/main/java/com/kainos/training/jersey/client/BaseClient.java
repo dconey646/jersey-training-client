@@ -1,5 +1,6 @@
 package com.kainos.training.jersey.client;
 
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -23,6 +24,6 @@ public class BaseClient
 		if (response.getStatus() == 204){
 			return true;
 		}
-		throw new RuntimeException("Failed:" + response.getStatus());		
+		throw new WebApplicationException("Failed:" + response.getStatus());		
 	}
 }
