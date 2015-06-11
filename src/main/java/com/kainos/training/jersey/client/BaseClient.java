@@ -8,14 +8,11 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Form;
 import javax.ws.rs.core.Response;
 
-import org.glassfish.jersey.client.ClientConfig;
-
 public class BaseClient 
 {
 
 	public Boolean getLogin(String username, String password){
 		Client client = ClientBuilder.newClient();
-		ClientConfig register = new ClientConfig();
 		WebTarget webTarget = client.target("http://localhost:8080");
 		WebTarget loginWebTarget = webTarget.path("login");		
 		Form form = new Form();
