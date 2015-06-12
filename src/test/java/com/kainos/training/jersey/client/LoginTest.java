@@ -12,6 +12,10 @@ import static org.hamcrest.core.Is.is;
 public class LoginTest{
 	
 	private BaseClient baseClient;
+	private static final String CORRECT_USERNAME = "admin";
+	private static final String CORRECT_PASSWORD = "password";
+	private static final String INCORRECT_USERNAME = "not admin";
+	private static final String INCORRECT_PASSWORD = "not password";
 	
 	@Before
 	public void setup(){
@@ -19,19 +23,14 @@ public class LoginTest{
 	}
 
 	@Test
-    public void shouldSuccessfullyLoginWithRightCredentials(){
-		String username = "admin";
-		String password = "password";
-		
-		assertThat(baseClient.getLogin(username, password), is(true));
+    public void shouldSuccessfullyLoginWithRightCredentials(){		
+		assertThat(baseClient.getLogin(CORRECT_USERNAME, CORRECT_PASSWORD), is(true));
 	}
 	
 	@Test
 	public void shouldFailLoginWithIncorrectCredentials(){
-		String username = "test";
-		String password = "not the password";
 		try {
-			baseClient.getLogin(username, password);
+			baseClient.getLogin(INCORRECT_USERNAME, INCORRECT_PASSWORD);
 		}catch(WebApplicationException e) {
 			assertThat(e.getResponse().getStatus(), is(500));
 		}
