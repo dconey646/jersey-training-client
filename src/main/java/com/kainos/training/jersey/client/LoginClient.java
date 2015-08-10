@@ -27,7 +27,7 @@ public class LoginClient
         WebTarget loginWebTarget = webTarget.path(LOGIN_PATH);		
     }
 
-    public Boolean getLogin(String username, String password){
+    public Boolean getLogin(String username, String password) {
         Form form = new Form();
         form.param(USERNAME_FORM_PARAM, username);
         form.param(PASSWORD_FORM_PARAM, password);
@@ -35,7 +35,7 @@ public class LoginClient
         Invocation.Builder invocationBuilder = loginWebTarget.request();
         Response response = invocationBuilder.post(Entity.entity(form, REQUEST_ENCODING));
 
-        if (response.getStatus() == SUCCESS_RESPONSE){
+        if (response.getStatus() == SUCCESS_RESPONSE) {
             return true;
         }
         throw new WebApplicationException(response);
