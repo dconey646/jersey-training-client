@@ -24,7 +24,7 @@ public class LoginClient
     public LoginClient() {
         Client client = ClientBuilder.newClient();
         WebTarget webTarget = client.target(BASE_URL);
-        WebTarget loginWebTarget = webTarget.path(LOGIN_PATH);		
+        loginWebTarget = webTarget.path(LOGIN_PATH);
     }
 
     public Boolean getLogin(String username, String password) {
